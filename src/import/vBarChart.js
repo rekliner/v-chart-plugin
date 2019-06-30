@@ -35,6 +35,7 @@ const vBarChart = function chart() {
     bar: {
       hPadding: 0,
       vPadding: 0,
+      hPercent: 100,
     },
     x: {
       axisHeight: 20,
@@ -52,7 +53,7 @@ const vBarChart = function chart() {
    * @function
    */
 
-  const getWidth = () => ((this.width - cs.y.axisWidth) / this.chartData.data.length - 1) / this.metric.length ;
+  const getWidth = () => ((this.width - cs.y.axisWidth) / this.chartData.data.length - 1) / this.metric.length / (cs.bar.hPercent / 100) ;
 
   /**
    * Returns height of the bar
