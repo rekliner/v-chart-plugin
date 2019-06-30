@@ -55,6 +55,8 @@ var bubbleChart = function chart(mode) {
       _this.addTooltip(d, window.event);
     }).on('mouseout', function (d) {
       _this.removeTooltip(d);
+    }).on('click', function (d) {
+      _this.$emit('chart-click', d);
     }).attr('r', function (d) {
       return cs.r.scale(d.metric[2]);
     }).attr('cx', function (d) {

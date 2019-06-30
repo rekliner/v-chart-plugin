@@ -64,6 +64,16 @@ var pieChart = function chart() {
     _this.removeTooltip(d);
   };
 
+  /**
+   * emits "chart-click" vue event
+   * @member mouseClick
+   * @function
+   * @param {Object} d (svg element)
+   */
+  var mouseClick = function mouseClick(d) {
+    _this.$emit('chart-click', d);
+  };
+
   var path = d3.arc().outerRadius(cs.radius - 10).innerRadius(25);
 
   /**
@@ -73,7 +83,7 @@ var pieChart = function chart() {
    * @param {Object} arc (svg element)
    */
   var enter = function enter(arc) {
-    arc.enter().append('g').attr('transform', 'translate(' + _this.width / 2 + ',' + _this.height / 2 + ')').append('path').merge(arc).attr('class', 'arc').attr('d', path).attr('fill', getColor).on('mouseover', mouseOver).on('mouseout', mouseOut).attr('transform', 'translate(0,' + _this.header + ')');
+    arc.enter().append('g').attr('transform', 'translate(' + _this.width / 2 + ',' + _this.height / 2 + ')').append('path').merge(arc).attr('class', 'arc').attr('d', path).attr('fill', getColor).on('mouseover', mouseOver).on('mouseout', mouseOut).on('click', mouseClick).attr('transform', 'translate(0,' + _this.header + ')');
     return arc;
   };
   /**

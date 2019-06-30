@@ -75,7 +75,7 @@ var barChart = function chart() {
    * @member getYCoord
    * @function
    * @param {Object} d (svg element)
-   * @param {Object} i (svg element)
+   * @param {Object} i (index of svg element)
    */
   var getYCoord = function getYCoord(d, i) {
     return i * (_this.displayHeight - cs.x.axisHeight - _this.header) / _this.ds.length + 1 + _this.header + cs.bar.offset * getHeight();
@@ -86,9 +86,10 @@ var barChart = function chart() {
    * @member mouseOver
    * @function
    * @param {Object} d (svg element)
+   * @param {Object} i (index of svg element)
    */
-  var mouseOver = function mouseOver(d) {
-    _this.addTooltip(d, window.event);
+  var mouseOver = function mouseOver(d, i) {
+    _this.addTooltip(d, window.event || { offsetX: getXCoord(d, i), offsetY: getYCoord(d, i) });
   };
 
   /**
@@ -100,6 +101,17 @@ var barChart = function chart() {
   var mouseOut = function mouseOut(d) {
     _this.removeTooltip(d);
   };
+
+  /**
+   * emits "chart-click" vue event
+   * @member mouseClick
+   * @function
+   * @param {Object} d (svg element)
+   */
+  var mouseClick = function mouseClick(d) {
+    _this.$emit('chart-click', d);
+  };
+
   /**
    * Runs when a new element is added to the dataset
    * @member enter
@@ -109,7 +121,7 @@ var barChart = function chart() {
   var enter = function enter(rects) {
     _this.metric.forEach(function (e, i) {
       cs.bar.offset = i;
-      rects[i].enter().append('rect').attr('fill', cs.palette.fill[i]).attr('stroke', cs.palette.stroke).attr('class', _this.selector).attr('class', 'r' + i).attr('width', getWidth).attr('height', getHeight).attr('y', getYCoord).attr('x', cs.y.axisWidth + cs.bar.hPadding).on('mouseover', mouseOver).on('mouseout', mouseOut);
+      rects[i].enter().append('rect').attr('fill', cs.palette.fill[i]).attr('stroke', cs.palette.stroke).attr('class', _this.selector).attr('class', 'r' + i).attr('width', getWidth).attr('height', getHeight).attr('y', getYCoord).attr('x', cs.y.axisWidth + cs.bar.hPadding).on('mouseover', mouseOver).on('mouseout', mouseOut).on('click', mouseClick);
     });
     if (_this.goal) _this.generateGoal(cs, false, cs.y.axisWidth + cs.bar.hPadding);
     return rects;

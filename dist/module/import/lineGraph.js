@@ -60,6 +60,8 @@ var lineGraph = function chart(mode) {
         _this.addTooltip(d, window.event);
       }).on('mouseout', function (d) {
         _this.removeTooltip(d);
+      }).on('click', function (d) {
+        _this.$emit('chart-click', d);
       }).attr('cx', function (d) {
         return cs.x.scale(d.dim) + cs.y.axisWidth + 5;
       }).attr('cy', function (d) {
