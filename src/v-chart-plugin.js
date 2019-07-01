@@ -174,7 +174,7 @@ const Chart = {
               .attr('x', this.width - 60)
               .attr('y', this.height * 0.95 - (i * 15))
               .style('text-anchor', 'middle')
-              .text(this.metricName[i] ? this.metricName[i] : this.metric[i]);
+              .text(this.metricName ? this.metricName[i] : this.metric[i]);
 
             d3.select(`#${this.chartData.selector}`)
               .append("g")
