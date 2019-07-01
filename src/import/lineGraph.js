@@ -28,7 +28,7 @@ const lineGraph = function chart(mode) {
    */
   let cs = {
     palette: {
-      lineFill: ['#ffcdcd', '#005792'],
+      lineFill: ['#ffcdcd', '#005792','#33ff99'],
       pointFill: '#005792',
       pointStroke: '#d1f4fa',
     },
