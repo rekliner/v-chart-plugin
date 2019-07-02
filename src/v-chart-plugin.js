@@ -172,9 +172,9 @@ const Chart = {
               .append('text')
               .attr('font-size', '10')
               .attr('id', 'legendText'+i)
-              .attr('x', this.width - 60)
+              .attr('x', this.width - 40)
               .attr('y', this.height * 0.95 - (i * 15))
-              .style('text-anchor', 'middle')
+              .style('text-anchor', 'right')
               .text(this.metricName ? this.metricName[i] : this.metric[i]);
 
             d3.select(`#${this.chartData.selector}`)
