@@ -177,7 +177,7 @@ var Chart = {
             this.metric.forEach(function (e, i) {
               d3.select('#' + _this.chartData.selector).append('text').attr('font-size', '10').attr('id', 'legendText' + i).attr('x', _this.width).attr('y', _this.height * 0.99 - i * 15).style('text-anchor', 'right').text(_this.metricName ? _this.metricName[i] : _this.metric[i]);
 
-              d3.select('#' + _this.chartData.selector).append("g").attr("class", "legends").append("rect").attr('x', _this.width - 45).attr('y', _this.height * 0.98 - i * 15 - 10).attr("width", 30).attr("height", 10).style("fill", function () {
+              d3.select('#' + _this.chartData.selector).append("g").attr("class", "legends").append("rect").attr('x', _this.width - 45).attr('y', _this.height * 0.99 - i * 15 - 10).attr("width", 30).attr("height", 10).style("fill", function () {
                 var fill = cs.palette.lineFill[i] || cs.palette.fill[i];
                 return fill;
               });
