@@ -171,6 +171,7 @@ const Chart = {
               d3.select(`#${this.chartData.selector}`)
               .append('text')
               .attr('font-size', '10')
+              .attr('id', 'legendText'+i)
               .attr('x', this.width - 60)
               .attr('y', this.height * 0.95 - (i * 15))
               .style('text-anchor', 'middle')
