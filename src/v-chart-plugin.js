@@ -134,7 +134,7 @@ const Chart = {
             .attr('y', e.offsetY - 25)
             .attr('class', 'tt')
             .attr('font-size', '10px')
-            .text(`${d.dim}:${d.metric}`);
+            .text(`${d.dim} : ${d.metric}`);
         },
         /**
          * Removes all tooltips from the SVG
@@ -172,8 +172,8 @@ const Chart = {
               .append('text')
               .attr('font-size', '10')
               .attr('id', 'legendText'+i)
-              .attr('x', this.width - 40)
-              .attr('y', this.height * 0.95 - (i * 15))
+              .attr('x', this.width)
+              .attr('y', this.height * 0.99 - (i * 15))
               .style('text-anchor', 'right')
               .text(this.metricName ? this.metricName[i] : this.metric[i]);
 
@@ -181,8 +181,8 @@ const Chart = {
               .append("g")
               .attr("class", "legends")
               .append("rect")
-              .attr('x', this.width - 30)
-              .attr('y', this.height * 0.95 - (i * 15) - 10)
+              .attr('x', this.width - 45)
+              .attr('y', this.height * 0.98 - (i * 15) - 10)
               .attr("width", 30)
               .attr("height", 10)
               .style("fill", function () {
