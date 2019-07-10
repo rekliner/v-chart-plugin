@@ -182,7 +182,7 @@ const Chart = {
               .attr("class", "legends")
               .append("rect")
               .attr('x', this.width - 40)
-              .attr('y', this.height * 0.99 - (i * 15) - 10)
+              .attr('y', this.height * 0.99 - (i * 15) - 15)
               .attr("width", 30)
               .attr("height", 10)
               .style("fill", function () {
